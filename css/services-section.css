@@ -1,0 +1,188 @@
+/* =========================================
+    SECTION SERVICES
+========================================= 
+*/
+
+.services-section {
+    background-color: #1F2231; /* Bleu nuit sombre (fond de la section) */
+    color: var(--clr-texte-clair);
+    position: relative;
+    overflow: hidden; /* Nécessaire pour les particules */
+}
+
+/* =========================================
+    CARTE DE SERVICE (Style Minimaliste Sombre)
+========================================= 
+*/
+
+.service-box {
+    /* Fond de carte légèrement plus clair que le fond de section pour la profondeur */
+    background-color: var(--clr-bg-sombre); 
+    border: 1px solid var(--clr-bordure-foncee); /* Bordure discrète */
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    color: var(--clr-texte-clair); /* Texte clair par défaut */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Effet au survol : met en évidence le bleu d'accentuation */
+.service-box:hover {
+    transform: translateY(-5px);
+    /* Ombre subtile bleue */
+    box-shadow: 0 10px 30px rgba(0, 119, 182, 0.3); 
+    border-color: var(--clr-accent-principal);
+}
+
+/* Icônes de service (Mise en évidence par un cercle et accentuation) */
+.service-icon {
+    font-size: 1.8rem; /* Taille plus raisonnable */
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 auto 1.5rem;
+    
+    /* Style du cercle d'accentuation Azur */
+    color: var(--clr-accent-secondaire); 
+    border: 2px solid var(--clr-accent-secondaire);
+    border-radius: 50%;
+    
+    /* Neutralisation des styles SF / Dégradé */
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    
+    transition: all 0.3s ease;
+}
+
+/* Survol de la boîte : l'icône se remplit de couleur */
+.service-box:hover .service-icon {
+    background-color: var(--clr-accent-principal);
+    color: var(--clr-texte-clair);
+    border-color: var(--clr-accent-principal);
+    transform: scale(1.05);
+}
+
+/* Style du bouton "En Savoir Plus" */
+.btn-outline-secondary {
+    color: var(--clr-accent-secondaire); /* Texte bleu clair */
+    border-color: var(--clr-accent-secondaire);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--clr-accent-secondaire);
+    border-color: var(--clr-accent-secondaire);
+    color: var(--clr-bg-sombre); /* Texte foncé sur bouton clair au survol */
+}
+
+/* =========================================
+    PARTICULES FLOTTANTES (VERSION ENRICHIE)
+========================================= 
+*/
+
+/* Styles de base pour les particules */
+[class^="floating-particle-"] {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4; 
+    z-index: 1;
+    pointer-events: none;
+    
+    /* Combinaison de deux animations pour un mouvement complexe */
+    animation: particleFloat 12s ease-in-out infinite alternate, 
+               particleRotate 15s linear infinite; 
+}
+
+/* Particule 1 : Bleu Marine (Grand Carré) */
+.floating-particle-1 {
+    width: 100px;
+    height: 100px;
+    background-color: var(--clr-accent-principal); /* Bleu Marine */
+    top: 5%;
+    left: 10%;
+    animation-delay: 1s;
+    border-radius: 10px; 
+    opacity: 0.2;
+}
+
+/* Particule 2 : Jaune (Petit Cercle) */
+.floating-particle-2 {
+    width: 25px;
+    height: 25px;
+    background-color: var(--clr-details-tertiaire); /* Jaune */
+    top: 55%;
+    right: 5%;
+    animation-duration: 15s, 10s;
+    opacity: 0.6;
+}
+
+/* Particule 3 : Azur (Ligne Inclinée) */
+.floating-particle-3 {
+    width: 5px;
+    height: 120px;
+    background-color: var(--clr-accent-secondaire); /* Azur/Bleu clair */
+    top: 80%;
+    left: 30%;
+    animation-duration: 10s, 20s;
+    border-radius: 0;
+    transform: rotate(45deg);
+    opacity: 0.35;
+}
+
+/* NOUVELLE PARTICULE 4 : Rouge (Cercle Déformé) */
+.floating-particle-4 {
+    width: 40px;
+    height: 40px;
+    background-color: var(--clr-details-quaternaire); /* Rouge */
+    top: 15%;
+    right: 40%;
+    animation-delay: 3s;
+    animation-duration: 18s, 12s;
+    border-radius: 50%; /* Cercle */
+    transform: skewX(20deg); /* Légèrement déformé */
+    opacity: 0.4;
+}
+
+/* NOUVELLE PARTICULE 5 : Blanc (Ligne Fine Verticale) */
+.floating-particle-5 {
+    width: 2px;
+    height: 80px;
+    background-color: var(--clr-texte-clair); /* Blanc */
+    bottom: 10%;
+    left: 55%;
+    animation-delay: 5s;
+    animation-duration: 14s, 18s;
+    border-radius: 1px;
+    opacity: 0.25;
+}
+
+/* NOUVELLE PARTICULE 6 : Azur (Petit Carré) */
+.floating-particle-6 {
+    width: 30px;
+    height: 30px;
+    background-color: var(--clr-accent-secondaire); /* Azur/Bleu clair */
+    top: 30%;
+    left: 70%;
+    animation-delay: 2s;
+    animation-duration: 9s, 13s;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+/* Animation de flottaison (Translation) */
+@keyframes particleFloat {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(30px, 30px); } 
+    100% { transform: translate(0, 0); }
+}
+
+/* Animation de Rotation */
+@keyframes particleRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

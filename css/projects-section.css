@@ -1,0 +1,217 @@
+/* =========================================
+    SECTION PROJETS
+========================================= 
+*/
+
+.projects-section {
+    background-color: #1F2231; /* Fond bleu nuit */
+    color: var(--clr-texte-clair); /* Texte clair par défaut */
+    position: relative;
+    overflow: hidden; /* Nécessaire pour les particules */
+}
+
+/* --- Cartes de Projet --- */
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: var(--clr-bg-sombre); /* Fond de carte sombre */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--clr-bordure-foncee);
+    
+    /* Assure que la carte a une hauteur pour contenir l'image */
+    height: 300px; /* Exemple de hauteur fixe pour des cartes uniformes */
+    display: flex; /* Utilisation de flexbox pour l'image et l'overlay */
+    align-items: center; /* Centrer verticalement le contenu s'il y a lieu */
+    justify-content: center; /* Centrer horizontalement le contenu */
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 119, 182, 0.4); 
+    border-color: var(--clr-accent-principal);
+}
+
+/* Image de projet */
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recouvre bien la zone sans déformer */
+    display: block;
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* Effet de zoom sur l'image au survol de la carte */
+.project-card:hover .project-image {
+    filter: brightness(0.5); /* Assombrit l'image */
+    transform: scale(1.05); /* Petit zoom */
+}
+
+/* Masque de survol (Overlay) */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Fond sombre semi-transparent */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrer verticalement le texte */
+    align-items: center; /* Centrer horizontalement le texte */
+    padding: 2rem;
+    color: var(--clr-texte-clair);
+    opacity: 0; /* Caché par défaut */
+    transition: opacity 0.3s ease;
+    text-align: center; /* Centrer le texte à l'intérieur de l'overlay */
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1; /* Apparaît au survol */
+}
+
+.project-category {
+    font-size: 0.85rem;
+    color: var(--clr-accent-secondaire); /* Azur */
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.project-title {
+    font-size: 1.6rem; /* Légèrement plus grand */
+    font-weight: 700;
+    margin-bottom: 1rem; /* Plus d'espace sous le titre */
+}
+
+/* Le style du bouton "Voir Tous Mes Projets" réutilise le style .btn-outline-secondary défini dans la section Services. */
+
+/* =========================================
+    PARTICULES FLOTTANTES (Section Projets)
+========================================= 
+*/
+/* (Conserver le CSS des particules tel quel, il est fonctionnel) */
+[class^="project-particle-"] {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3; 
+    z-index: 0; 
+    pointer-events: none;
+    animation: particleFloat 15s ease-in-out infinite alternate, 
+               particleRotate 20s linear infinite; 
+}
+
+/* Particule 1 : Grand Cercle Azur */
+.project-particle-1 {
+    width: 120px;
+    height: 120px;
+    background-color: var(--clr-accent-secondaire); /* Azur */
+    top: 10%;
+    left: 5%;
+    animation-delay: 2s;
+    opacity: 0.15;
+}
+
+/* Particule 2 : Petit Carré Rouge */
+.project-particle-2 {
+    width: 30px;
+    height: 30px;
+    background-color: var(--clr-details-quaternaire); /* Rouge */
+    bottom: 20%;
+    right: 15%;
+    animation-duration: 10s, 15s;
+    animation-delay: 4s;
+    border-radius: 5px;
+    opacity: 0.4;
+}
+
+/* Particule 3 : Ligne Fine Bleu Marine */
+.project-particle-3 {
+    width: 3px;
+    height: 100px;
+    background-color: var(--clr-accent-principal); /* Bleu Marine */
+    top: 60%;
+    left: 25%;
+    animation-delay: 1s;
+    animation-duration: 18s, 25s;
+    border-radius: 0;
+    transform: rotate(-30deg);
+    opacity: 0.2;
+}
+
+/* Particule 4 : Cercle Jaune */
+.project-particle-4 {
+    width: 40px;
+    height: 40px;
+    background-color: var(--clr-details-tertiaire); /* Jaune */
+    top: 30%;
+    right: 8%;
+    animation-delay: 3s;
+    animation-duration: 12s, 10s;
+    opacity: 0.5;
+}
+
+/* Particule 5 : Carré Blanc */
+.project-particle-5 {
+    width: 60px;
+    height: 60px;
+    background-color: var(--clr-texte-clair); /* Blanc */
+    bottom: 5%;
+    left: 40%;
+    animation-delay: 6s;
+    animation-duration: 16s, 22s;
+    border-radius: 5px;
+    opacity: 0.1;
+}
+
+/* Particule 6 : Cercle Bleu Marine */
+.project-particle-6 {
+    width: 20px;
+    height: 20px;
+    background-color: var(--clr-accent-principal); /* Bleu Marine */
+    top: 85%;
+    left: 70%;
+    animation-delay: 0s;
+    animation-duration: 9s, 11s;
+    opacity: 0.3;
+}
+
+/* Particule 7 : Rectangle Incliné Azur */
+.project-particle-7 {
+    width: 80px;
+    height: 5px;
+    background-color: var(--clr-accent-secondaire); /* Azur */
+    top: 45%;
+    left: -2%; 
+    animation-delay: 4s;
+    animation-duration: 13s, 17s;
+    border-radius: 0;
+    transform: rotate(60deg);
+    opacity: 0.25;
+}
+
+/* Particule 8 : Petit Cercle Rouge */
+.project-particle-8 {
+    width: 15px;
+    height: 15px;
+    background-color: var(--clr-details-quaternaire); /* Rouge */
+    top: 5%;
+    right: 25%;
+    animation-delay: 7s;
+    animation-duration: 11s, 19s;
+    opacity: 0.4;
+}
+
+/* Animation de flottaison (Translation) */
+@keyframes particleFloat {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(30px, 30px); } 
+    100% { transform: translate(0, 0); }
+}
+
+/* Animation de Rotation */
+@keyframes particleRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

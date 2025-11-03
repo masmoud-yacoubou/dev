@@ -1,0 +1,194 @@
+/* =========================================
+    HERO SECTION (ACCUEIL)
+========================================= 
+*/
+
+.hero-section {
+    min-height: calc(100vh - 80px);
+    position: relative;
+    padding-top: var(--spacer-xl);
+    padding-bottom: var(--spacer-xl);
+    background: radial-gradient(circle at 80% 0%, rgba(0, 119, 182, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 20% 100%, rgba(0, 119, 182, 0.15) 0%, transparent 40%),
+                var(--clr-bg-sombre);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.hero-section > .container-fluid {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Bouton CTA Principal --- */
+.btn-gradient-primary {
+    background: linear-gradient(90deg, #005A9C, var(--clr-accent-principal)); 
+    border: 2px solid var(--clr-accent-principal);
+    color: var(--clr-texte-clair);
+    font-weight: 600;
+    padding: 1rem 3rem;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.btn-gradient-primary:hover {
+    background: linear-gradient(90deg, var(--clr-accent-principal), #005A9C);
+    color: var(--clr-texte-clair);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.6);
+}
+
+/* =========================================
+    LIENS SOCIAUX (ABOUT / HERO)
+========================================= 
+*/
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--clr-texte-clair);
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.social-icon:hover {
+    background: linear-gradient(135deg, #005A9C, var(--clr-accent-principal));
+    color: #fff;
+    border-color: var(--clr-accent-principal);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 119, 182, 0.4);
+}
+
+/* Centrage sur petits écrans */
+@media (max-width: 991.98px) {
+    .social-icons {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
+
+
+/* =========================================
+    IMAGE ET CERCLES DE COMPÉTENCES
+========================================= 
+*/
+
+.hero-image-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 
+        0 0 0 8px rgba(255, 255, 255, 0.1),
+        0 0 30px rgba(0, 119, 182, 0.8),
+        0 0 60px rgba(0, 119, 182, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.hero-image-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 119, 182, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+    transform: scale(1.05);
+}
+
+/* Cercles de Compétences Flottants */
+.skill-circle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--skill-bg, #333);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    animation: float 6s ease-in-out infinite alternate;
+}
+
+.skill-circle img {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+}
+
+/* Positions des cercles */
+.skill-circle-1 { top: 15%; right: 20%; animation-delay: 0s; }
+.skill-circle-2 { top: 40%; right: 3%; animation-delay: 1s; }
+.skill-circle-3 { bottom: 20%; right: 18%; animation-delay: 2s; }
+.skill-circle-4 { top: 60%; right: 35%; animation-delay: 3s; }
+.skill-circle-5 { top: 30%; right: 45%; animation-delay: 4s; }
+
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(0, -10px); }
+    100% { transform: translate(0, 0); }
+}
+
+
+/* =========================================
+    MEDIA QUERIES (Responsivité)
+========================================= 
+*/
+
+@media (max-width: 991.98px) {
+    .hero-section {
+        padding-top: 5rem;
+        text-align: center;
+    }
+    
+    .col-lg-6 {
+        margin: auto;
+    }
+    
+    .hero-image-container {
+        width: 280px;
+        height: 280px;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+    
+    .skill-circle {
+        display: none; 
+    }
+    
+    .d-flex.justify-content-lg-start {
+        justify-content: center !important;
+    }
+}

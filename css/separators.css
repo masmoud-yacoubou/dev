@@ -1,0 +1,236 @@
+/* ===== SÉPARATEURS DE SECTIONS ===== */
+
+/* Séparateur de base avec effet de gradient */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.1) 20%, 
+    rgba(255,255,255,0.3) 50%, 
+    rgba(255,255,255,0.1) 80%, 
+    transparent 100%);
+  margin: 4rem 0;
+  position: relative;
+}
+
+/* Séparateur avec effet de vague */
+.section-divider-wave {
+  height: 50px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%231a1a1a'%3E%3C/path%3E%3C/svg%3E");
+  background-size: 1200px 50px;
+  margin: 4rem 0;
+}
+
+/* Séparateur avec points/cercles */
+.section-divider-dots {
+  height: 30px;
+  margin: 4rem 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-divider-dots::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-50%);
+}
+
+.section-divider-dots::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 30px;
+  background: #0d1117;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.section-divider-dots span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+}
+
+/* Séparateur avec icône */
+.section-divider-icon {
+  height: 60px;
+  margin: 4rem 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-divider-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-50%);
+}
+
+.section-divider-icon i {
+  position: relative;
+  z-index: 1;
+  background: #0d1117;
+  padding: 0 20px;
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Séparateur avec effet de flèche */
+.section-divider-arrow {
+  height: 40px;
+  margin: 4rem 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-divider-arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-50%);
+}
+
+.section-divider-arrow::after {
+  content: "↓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: #0d1117;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 1.2rem;
+}
+
+/* Séparateur avec effet de zigzag */
+.section-divider-zigzag {
+  height: 20px;
+  margin: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-divider-zigzag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(135deg, transparent 25%, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.1) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.1) 75%);
+  background-size: 20px 20px;
+}
+
+/* Séparateur avec effet de flèche pointant vers le bas */
+.section-divider-v2 {
+  height: 60px;
+  margin: 4rem 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-divider-v2::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-50%);
+}
+
+.section-divider-v2::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid rgba(255,255,255,0.3);
+  background: transparent;
+}
+
+/* Séparateur avec effet de flèche pointant vers le haut */
+.section-divider-v3 {
+  height: 60px;
+  margin: 4rem 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-divider-v3::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-50%);
+}
+
+.section-divider-v3::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid rgba(255,255,255,0.3);
+  background: transparent;
+}
+
+/* Animation pour certains séparateurs */
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.3; }
+}
+
+.section-divider-icon i,
+.section-divider-arrow::after,
+.section-divider-v2::after,
+.section-divider-v3::after {
+  animation: pulse 3s infinite;
+}

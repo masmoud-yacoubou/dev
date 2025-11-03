@@ -1,0 +1,207 @@
+/* =========================================
+    IMPORTS EXTERNES
+========================================= 
+*/
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+
+
+/* =========================================
+    CSS RACINE : VARIABLES GLOBALES
+========================================= 
+*/
+
+:root {
+    /* ---------------------- COULEURS ---------------------- */
+    
+    --clr-bg-fonce: #1F2231; /* Bleu Nuit Profond (Fonds de section) */
+    --clr-bg-sombre: #282C3A; /* Gris/Bleu (Fonds de cartes/éléments) */
+    --clr-bordure-foncee: #3A405A; /* Bordures subtiles */
+    --clr-texte-clair: #ffffff;
+    --clr-texte-faible: #a0a6b8; /* Gris clair pour les textes secondaires */
+    --clr-accent-principal: #004488; /* Bleu Marine (Bouton principal) */
+    --clr-accent-secondaire: #0077B6; /* Azur/Cyan (Accents, lueurs) */
+    --clr-details-tertiaire: #FFC300; /* Jaune (Détails) */
+    --clr-details-quaternaire: #D90429; /* Rouge (Détails) */
+
+    
+    /* ---------------------- TYPOGRAPHIE ---------------------- */
+
+    /* Police des Titres (Esthétique/Luxueuse) */
+    --ff-titres: 'Lora', serif;
+ 
+
+    /* Police du Texte Principal (Propre/Lisible) */
+    --ff-texte: 'Poppins', sans-serif;
+    
+    /* ---------------------- TAILLES DE MARGE/PADDING ---------------------- */
+    --spacer-s: 0.5rem;
+    --spacer-m: 1rem;
+    --spacer-l: 2rem;
+    --spacer-xl: 4rem;
+}
+
+    
+
+
+/* =========================================
+    STYLES GÉNÉRAUX ET TYPOGRAPHIE
+========================================= 
+*/
+
+body {
+    background-color: var(--clr-bg-sombre);
+    color: var(--clr-texte-clair);
+    font-family: var(--ff-texte);
+    overflow-x: hidden;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ff-titres);
+    color: var(--clr-texte-clair);
+    margin-bottom: var(--spacer-m);
+}
+
+/* Utilitaires Bootstrap modifiés */
+.text-primary {
+    color: var(--clr-accent-principal) !important;
+}
+
+.text-secondary {
+    color: var(--clr-accent-secondaire) !important;
+}
+
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.max-width-p {
+    max-width: 500px;
+}
+
+@media (min-width: 992px) {
+    .max-width-p {
+        margin-left: 0;
+    }
+}
+
+/* =============================
+   SÉPARATEUR DIAGONAL ENTRE SECTIONS
+============================= */
+.section-separator-diagonal {
+  position: relative;
+  width: 100%;
+  height: 120px; /* hauteur ajustable */
+  background: #1F2231; /* couleur de la section suivante */
+  clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+  z-index: 1;
+  margin-top: -1px; /* élimine toute ligne noire entre sections */
+}
+
+/* Variante fluide sur grand écran */
+@media (min-width: 768px) {
+  .section-separator-diagonal {
+    height: 160px;
+    clip-path: polygon(0 100%, 100% 70%, 100% 100%, 0 100%);
+  }
+}
+
+/* Option esthétique : dégradé fondu */
+.section-separator-diagonal.gradient {
+  background: linear-gradient(
+    to bottom right,
+    var(--clr-bg-sombre) 0%,
+    #1F2231 100%
+  );
+}
+
+/* =============================
+   PRELOADER PREMIUM
+============================= */
+#preloader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 30% 30%, #0e1726, #1b263b, #0e1726);
+  background-size: 200% 200%;
+  animation: gradientMove 6s ease-in-out infinite;
+  z-index: 9999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Conteneur principal du loader */
+.loader {
+  text-align: center;
+  color: #ffffff;
+  font-family: var(--ff-titres, 'Poppins', sans-serif);
+}
+
+/* Spinner stylisé */
+.spinner {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem auto;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  border-top: 4px solid #0077B6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 20px rgba(0, 119, 182, 0.6);
+}
+
+/* Texte du loader */
+.loader-text {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #fff;
+  animation: fadeUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+/* === Animations === */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+
+
+

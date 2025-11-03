@@ -1,0 +1,526 @@
+/* =========================================
+    ABOUT PAGE STYLES (about-page.css)
+========================================= */
+
+/* --- Variables de Couleur (Si non définies dans main.css) --- */
+/* Assurez-vous que ces variables sont définies dans main.css ou au début de ce fichier */
+
+
+/* --- SECTION HERO --- */
+/* CORRECTION MAJEURE: Utilisation de background-image pour le dégradé */
+header.about-hero-section {
+    background-image: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background-color: #1a1a2e; /* Fallback si le dégradé ne charge pas */
+    padding-top: 10rem !important;
+    padding-bottom: 5rem !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Style de l'image et du conteneur (pour la marge/disposition) */
+.about-hero-image {
+    padding: 1rem; 
+    /* Amélioration de la disposition : le wrapper est centré via mx-auto dans le HTML, 
+       ce CSS permet juste d'ajouter un léger espace interne si besoin. */
+}
+
+.about-hero-image img {
+    /* Style par défaut pour votre image de profil ronde */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%; /* Rendre l'image parfaitement ronde */
+    box-shadow: 0 0 0 10px rgba(45, 178, 255, 0.2), /* Ombre extérieure accentuée */
+                0 15px 50px rgba(0, 0, 0, 0.6); /* Ombre de profondeur */
+    border: 3px solid var(--clr-accent-secondaire); /* Bordure d'accentuation */
+    transition: transform 0.5s ease;
+}
+
+/* Effet de survol sur l'image pour un look plus dynamique */
+.about-hero-image img:hover {
+    transform: scale(1.02) rotate(1deg);
+}
+
+
+/* --- ÉLÉMENTS FLOTTANTS GÉOMÉTRIQUES --- */
+.floating-element-1, .floating-element-2 {
+    position: absolute;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1; /* Sous le contenu textuel (z-2) */
+    animation: particleFloat 15s ease-in-out infinite alternate, 
+               particleRotate 20s linear infinite;
+}
+
+/* Redéfinition des positions pour encadrer l'image/le texte */
+.floating-element-1 {
+    width: 150px;
+    height: 150px;
+    background-color: var(--clr-accent-secondaire); /* Azur */
+    top: 15%; /* Position haute */
+    left: 5%; /* Position gauche */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation-delay: 2s;
+    opacity: 0.15; /* Très discret */
+}
+
+.floating-element-2 {
+    width: 60px;
+    height: 60px;
+    background-color: var(--clr-details-quaternaire); /* Rouge */
+    bottom: 20%; /* Position basse */
+    right: 15%; /* Position droite */
+    border-radius: 5px;
+    transform: rotate(45deg);
+    animation-duration: 12s, 10s;
+    animation-delay: 4s;
+    opacity: 0.3;
+}
+
+/* Animations (Gardées pour le mouvement) */
+@keyframes particleFloat {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(50px, -20px) rotate(10deg); }
+}
+
+@keyframes particleRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Ajout pour la zone de texte afin de limiter la largeur sur grand écran */
+@media (min-width: 992px) {
+    .text-lg-start .lead {
+        max-width: 85%; /* Pour ne pas avoir une ligne de texte trop longue */
+    }
+}
+
+/* Bouton Mon CV - Ajout ou modification si non défini dans main.css */
+.btn-download-cv {
+    background-color: transparent;
+    color: var(--clr-accent-secondaire);
+    border: 2px solid var(--clr-accent-secondaire);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-download-cv:hover {
+    background-color: var(--clr-accent-secondaire);
+    color: var(--clr-bg-fonce);
+    border-color: var(--clr-accent-secondaire);
+}
+
+/* Badges (pour la section Hero) */
+.badge {
+    font-weight: 500;
+    /* On force les couleurs accentuées */
+}
+.badge.bg-primary { background-color: var(--clr-accent-principal) !important; }
+.badge.bg-secondary { background-color: var(--clr-accent-secondaire) !important; }
+.badge.bg-success { background-color: var(--clr-details-tertiaire) !important; color: #111 !important; } /* Texte sombre sur jaune */
+
+
+/* --- SECTION MON PARCOURS (JOURNEY) --- */
+.journey-section {
+    background-color: var(--clr-bg-fonce);
+}
+
+.journey-card {
+    background-color: var(--clr-bg-sombre);
+    border: 1px solid var(--clr-bordure-foncee);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Effet de lueur au survol */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.journey-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 119, 182, 0.3); /* Lueur Bleue */
+    border-color: var(--clr-accent-secondaire);
+}
+
+.journey-icon i {
+    font-size: 2.5rem;
+    color: var(--clr-accent-secondaire); /* Icônes en Azur */
+}
+
+.list-unstyled li i {
+    color: var(--clr-details-tertiaire) !important; /* Coche en Jaune pour contraste */
+}
+/* =========================================
+    TIMELINE SPECIFIC STYLES
+========================================= */
+
+.timeline-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* La ligne centrale */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 4px; /* Épaisseur de la ligne */
+    background-color: var(--clr-bordure-foncee); /* Couleur de la ligne de fond */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px; /* Centrage parfait */
+    z-index: 0;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    /* Pour l'animation d'apparition */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+/* Styles pour les cartes à gauche et à droite */
+.timeline-item.left {
+    left: 0;
+}
+
+.timeline-item.right {
+    left: 50%;
+}
+
+/* Applique les styles du voyage card et assure une hauteur visuelle */
+.timeline-content {
+    position: relative;
+    /* Votre classe .journey-card applique déjà le fond sombre et le border/shadow */
+    min-height: 180px; /* Pour un look uniforme */
+}
+
+/* Point de jonction (le cercle sur la ligne) */
+.timeline-point {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: -20px;
+    background-color: var(--clr-accent-secondaire);
+    border: 4px solid var(--clr-bg-fonce); /* Bordure pour l'effet 3D/décroché */
+    top: 20px;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--clr-texte-clair);
+    font-size: 1.2rem;
+}
+
+/* Ajustement pour les points de droite */
+.timeline-item.right .timeline-point {
+    left: -20px;
+}
+
+/* Triangle de connexion pour les cartes de gauche */
+.timeline-item.left .timeline-content::after {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: -10px;
+    border: medium solid var(--clr-bg-sombre);
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--clr-bg-sombre);
+}
+
+/* Triangle de connexion pour les cartes de droite */
+.timeline-item.right .timeline-content::after {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: -10px;
+    border: medium solid var(--clr-bg-sombre);
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--clr-bg-sombre) transparent transparent;
+}
+
+/* Point final pour la fin de la timeline */
+.timeline-item.final-point {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+.timeline-point.final {
+    margin-left: -20px;
+    left: 50%;
+    top: -10px;
+    background-color: var(--clr-details-quaternaire); /* Couleur différente pour le point final */
+}
+
+/* --- RESPONSIVE (Passage à une seule colonne sur mobile) --- */
+@media (max-width: 767.98px) {
+    
+    /* La ligne se décale à gauche */
+    .timeline-container::after {
+        left: 20px; 
+    }
+
+    /* Tous les éléments vont à gauche */
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px; /* Espace pour le point */
+        padding-right: 15px;
+        left: 0 !important;
+    }
+
+    /* Les points de droite et de gauche sont repositionnés sur la nouvelle ligne */
+    .timeline-item.left .timeline-point,
+    .timeline-item.right .timeline-point {
+        left: 0;
+        margin-left: 0;
+        right: auto;
+        transform: translateX(0);
+    }
+    .timeline-point {
+        left: 0px !important;
+        margin-left: 0;
+    }
+
+    /* Retirer les triangles (Trop complexes à gérer sur mobile) */
+    .timeline-item.left .timeline-content::after,
+    .timeline-item.right .timeline-content::after {
+        border: none;
+    }
+    
+    .timeline-item.final-point {
+        width: 100%;
+    }
+    .timeline-point.final {
+        left: 20px; /* Repositionnement du point final */
+    }
+}
+
+/* --- SECTION TECHNOLOGIES --- */
+.technologies-section {
+    background-color: var(--clr-bg-sombre); /* Fond légèrement différent des autres */
+}
+
+.tech-card {
+    background-color: #313645; /* Fond encore plus sombre pour les cartes tech */
+    border: 1px solid var(--clr-bordure-foncee);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tech-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--clr-accent-secondaire);
+    box-shadow: 0 5px 25px rgba(0, 119, 182, 0.5); /* Forte lueur bleue */
+}
+
+.tech-icon i {
+    font-size: 3rem;
+    /* Les icônes de Bootstrap Icons sont déjà colorées (text-danger, text-primary, etc.) */
+}
+/* =========================================
+    SKILL CIRCLES (Jauges Circulaires)
+========================================= */
+
+.skill-circle-container {
+    position: relative;
+    width: 100px; /* Taille du conteneur du cercle */
+    height: 100px;
+    margin: 0 auto;
+    display: flex; /* Pour centrer le contenu interne */
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); /* Démarre la jauge en haut */
+}
+
+.skill-circle-bg {
+    fill: none;
+    stroke: var(--clr-bordure-foncee); /* Couleur de la piste de fond */
+    stroke-width: 1.8;
+}
+
+.skill-circle-progress {
+    fill: none;
+    stroke: var(--clr-details-tertiaire); /* Couleur de la jauge de progression */
+    stroke-width: 2;
+    stroke-linecap: round; /* Extrémités arrondies */
+    transition: stroke-dashoffset 1s ease-out; /* Animation de la jauge */
+    stroke-dasharray: 100; /* Longueur totale du cercle */
+    stroke-dashoffset: 100; /* Démarre à 0% rempli */
+}
+
+/* Contenu au centre du cercle (icône) */
+.skill-circle-content {
+    position: absolute;
+    z-index: 2; /* Au-dessus des cercles SVG */
+    font-size: 2.8rem; /* Taille de l'icône */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.skill-circle-content i {
+    /* Assurez-vous que les icônes Bootstrap sont déjà stylisées par leurs classes text-* */
+    /* ou ajoutez une couleur par défaut si nécessaire */
+}
+
+/* =========================================
+    CORRECTION TAILLE DES LOGOS
+========================================= */
+
+/* Conteneur de l'icône / logo */
+.skill-circle-content.tech-icon {
+    /* Assurez-vous que l'icône est centrée verticalement et horizontalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Important pour définir la zone de centrage */
+    height: 100%;
+}
+
+/* CIBLE LES IMAGES DANS LE CERCLE POUR LIMITER LEUR TAILLE */
+.skill-circle-content.tech-icon img {
+    /* Ceci est le correctif principal : force l'image à 50% de la taille du conteneur */
+    max-width: 50%; 
+    max-height: 50%;
+    height: auto;
+    width: auto;
+    /* Ajoutez une petite transition si vous avez des effets de survol */
+    transition: transform 0.3s ease; 
+}
+
+/* =========================================
+    Styles pour la Section Marquee (Logos Outils)
+========================================= */
+
+/* Une couleur de fond légèrement plus sombre que le corps pour le contraste */
+.bg-dark-2 {
+    background-color: #1a1c29 !important; 
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Conteneur principal qui cache le débordement horizontal */
+.logo-marquee-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+    white-space: nowrap; /* Empêche les éléments de passer à la ligne */
+    position: relative;
+}
+
+/* Le "track" qui contient tous les sets de logos et qui sera animé */
+.logo-marquee-track {
+    display: flex;
+    animation: marquee-scroll 40s linear infinite; /* 40s pour une vitesse modérée */
+    width: fit-content; /* Permet au track d'être plus large que le conteneur */
+}
+
+/* Set de logos - chaque répétition de la liste d'outils */
+.logo-marquee-set {
+    display: flex;
+    flex-shrink: 0; /* Ne pas rétrécir les sets */
+}
+
+/* Chaque élément de logo */
+.tool-logo-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+    opacity: 0.85; 
+    transition: opacity 0.3s, transform 0.3s; /* Ajouter transform pour la transition */
+}
+
+.tool-logo-item:hover {
+    opacity: 1;
+    transform: translateY(-5px); /* Léger soulèvement au survol */
+}
+
+/* Logos */
+.tool-logo-item img {
+    width: 75px; 
+    height: 75px; 
+    object-fit: contain;
+    filter: none; 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transitions pour zoom et ombre */
+}
+
+/* Effet de survol sur l'image */
+.tool-logo-item:hover img {
+    transform: scale(1.1); /* Zoom de 10% */
+    box-shadow: 0 0 15px rgba(45, 178, 255, 0.5); /* Ombre Azur */
+    filter: none; /* Conserver sans filtre */
+}
+
+.tool-logo-item .tool-name {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Définition de l'animation de défilement infini */
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        /* Défile la largeur exacte d'un jeu de logos */
+        transform: translateX(-50%); 
+    }
+}
+
+
+/* --- SECTION POURQUOI ME CHOISIR (FEATURES) --- */
+.why-choose-section {
+    background-color: var(--clr-bg-fonce);
+}
+
+.feature-card {
+    background-color: var(--clr-bg-sombre);
+    border: 1px solid var(--clr-bordure-foncee);
+    transition: background-color 0.3s ease;
+}
+
+.feature-card:hover {
+    background-color: #353b4a; /* Assombrissement léger au survol */
+}
+
+.feature-icon i {
+    font-size: 2.2rem;
+    color: var(--clr-details-tertiaire); /* Jaune comme couleur d'accentuation */
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover .feature-icon i {
+    color: var(--clr-accent-secondaire); /* Change en Azur au survol */
+}
+
+
+@keyframes particleFloat {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(30px, 30px) rotate(180deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@keyframes particleRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

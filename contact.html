@@ -308,32 +308,58 @@
         <i class="bi bi-arrow-up"></i>
     </button>
 
-    <script>
-    // Année actuelle
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-    
-    // Bouton de retour en haut
-    const backToTopBtn = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
-    });
-    
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script src="js/loader.js"></script>
+
+<script>
+    // A. INITIALISATION AOS
+    AOS.init({
+        duration: 1000, 
+        once: true, 
+        easing: 'ease-in-out' // J'ai ajouté l'easing que vous aviez sur index.html
     });
 
-    // Validation en temps réel améliorée (conservée)
+    // B. Logique du Préchargeur (Si c'est dans le fichier loader.js, retirez-le d'ici !)
+    // Si la logique ci-dessous est déjà dans loader.js, retirez ce bloc pour éviter les doublons.
+    window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        setTimeout(() => preloader.classList.add("hidden"), 800);
+    });
+
+    // C. UTILS & NAVIGATION (Année, Back to Top, Validation de formulaire)
+    
+    // Année actuelle dans le footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Bouton de retour en haut (Back To Top)
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    // Si l'élément existe avant d'ajouter l'écouteur d'événement (bonne pratique)
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Validation en temps réel améliorée
     const inputs = document.querySelectorAll('.form-control-custom');
     inputs.forEach(input => {
-        // Validation quand l'utilisateur quitte le champ (blur)
+        // [Votre logique de validation ici, elle semble correcte.]
+        // ...
         input.addEventListener('blur', function() {
             if (this.checkValidity()) {
                 this.classList.remove('is-invalid');
@@ -344,32 +370,20 @@
                 
                 const feedback = this.parentElement.querySelector('.invalid-feedback');
                 if (feedback) {
-                     if (this.id === 'message' && this.value === "") {
-                         feedback.textContent = "Veuillez décrire votre demande en détail.";
-                     } else {
-                         feedback.textContent = this.validationMessage;
-                     }
+                    if (this.id === 'message' && this.value === "") {
+                        feedback.textContent = "Veuillez décrire votre demande en détail.";
+                    } else {
+                        feedback.textContent = this.validationMessage;
+                    }
                 }
             }
         });
         
-        // Suppression des indicateurs de validité/erreur quand l'utilisateur tape à nouveau
         input.addEventListener('input', function() {
              this.classList.remove('is-invalid'); 
              this.classList.remove('is-valid');
         });
     });
 </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" ...></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/loader.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init({
-          duration: 1000, // Durée de l'animation en ms
-          once: true, // N'animer qu'une seule fois au défilement
-      });
-    </script>
 </body>
 </html>

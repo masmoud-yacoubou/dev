@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Ajoutez ce script à la fin de votre fichier principal JS (ex: /js/main.js ou juste avant </body>)
+// Ajoutez ce script à la fin de votre fichier principal JS (ex: js/main.js ou juste avant </body>)
 
 const timelineItems = document.querySelectorAll('.timeline-item');
 

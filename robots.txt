@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://masmoud-yacoubou.github.io/dev/sitemap.xml
